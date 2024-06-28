@@ -18,7 +18,7 @@
 <body>
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">ESFE DASHBOARD</a>
+        <a class="navbar-brand ps-3" href="{{ route('home') }}">ESFE DASHBOARD</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -37,12 +37,11 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Ajustes</a></li>
-                    <li><a class="dropdown-item" href="#!">Actividad</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>
+                    @if (auth()->check())
+                        <li><a class="dropdown-item" href="{{ route('docentes.logout') }}">Cerrar Sesión</a></li>
+                    @else
+                        <li><a class="dropdown-item" href="{{ route('docentes.login') }}">Iniciar Sesión</a></li>
+                    @endif
                 </ul>
             </li>
         </ul>
@@ -52,23 +51,25 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Mantenimiento</div>
-                        <a class="nav-link" href="#!">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
-                            Docentes
-                        </a>
-                        <a class="nav-link" href="#!">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa-solid fa-user-group"></i>
-                            </div>
-                            Grupos
-                        </a>
-                        <a class="nav-link" href="#!">
-                            <div class="sb-nav-link-icon">
-                                <i class="fa-solid fa-people-group"></i>
-                            </div>
-                            Docentes Grupos
-                        </a>
+                        @if (auth()->check())
+                            <div class="sb-sidenav-menu-heading">Mantenimiento</div>
+                            <a class="nav-link" href="{{ route('docentes.index') }}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
+                                Docentes
+                            </a>
+                            <a class="nav-link" href="{{ route('grupos.index') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa-solid fa-user-group"></i>
+                                </div>
+                                Grupos
+                            </a>
+                            <a class="nav-link" href="#!">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </div>
+                                Docentes Grupos
+                            </a>
+                        @endif
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
