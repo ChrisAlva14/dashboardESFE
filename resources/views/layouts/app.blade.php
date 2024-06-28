@@ -57,9 +57,15 @@
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-person-chalkboard"></i></div>
                                 Docentes
                             </a>
-                            <a class="nav-link" href="{{ route('grupos.index') }}">
+                            <a class="nav-link" href="{{ route('estudiantes.index') }}">
                                 <div class="sb-nav-link-icon">
                                     <i class="fa-solid fa-user-group"></i>
+                                </div>
+                                Estudiantes
+                            </a>
+                            <a class="nav-link" href="{{ route('grupos.index') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa-solid fa-users"></i>
                                 </div>
                                 Grupos
                             </a>
@@ -67,7 +73,13 @@
                                 <div class="sb-nav-link-icon">
                                     <i class="fa-solid fa-people-group"></i>
                                 </div>
-                                Docentes Grupos
+                                Grupos de Docentes
+                            </a>
+                            <a class="nav-link" href="{{ route('estudiantes_grupos.index') }}">
+                                <div class="sb-nav-link-icon">
+                                    <i class="fa-solid fa-people-group"></i>
+                                </div>
+                                Grupos de Estudiantes
                             </a>
                         @endif
                     </div>

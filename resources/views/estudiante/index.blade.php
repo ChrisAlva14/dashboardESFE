@@ -6,9 +6,9 @@
             {{ session('success') }}
         </div>
     @endif
-    <h1>Lista de docentes</h1>
+    <h1>Lista de Estudiantes</h1>
 
-    <form action="{{ route('docentes.index') }}" method="GET">
+    <form action="{{ route('estudiantes.index') }}" method="GET">
         @csrf
         <div class="row">
             <div class="col-sm-4">
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary">Buscar</button>
-                <a href="{{ route('docentes.create') }}" class="btn btn-success">Crear</a>
+                <a href="{{ route('estudiantes.create') }}" class="btn btn-success">Crear</a>
             </div>
 
         </div>
@@ -38,21 +38,21 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($docentes as $docente)
+            @foreach ($estudiantes as $estudiante)
                 <tr>
-                    <td>{{ $docente->nombre }}</td>
-                    <td>{{ $docente->apellido }}</td>
-                    <td>{{ $docente->email }}</td>
+                    <td>{{ $estudiante->nombre }}</td>
+                    <td>{{ $estudiante->apellido }}</td>
+                    <td>{{ $estudiante->email }}</td>
                     <td>
                         <table>
                             <td>
-                                <a href="{{ route('docentes.edit', $docente->id) }}" class="btn btn-warning">Editar</a>
+                                <a href="{{ route('estudiantes.edit', $estudiante->id) }}" class="btn btn-warning">Editar</a>
                             </td>
                             <td>
-                                <a href="{{ route('docentes.show', $docente->id) }}" class="btn btn-info">Ver</a>
+                                <a href="{{ route('estudiantes.show', $estudiante->id) }}" class="btn btn-info">Ver</a>
                             </td>
                             <td>
-                                <a href="{{ route('docentes.delete', $docente->id) }}" class="btn btn-danger">Eliminar</a>
+                                <a href="{{ route('estudiantes.delete', $estudiante->id) }}" class="btn btn-danger">Eliminar</a>
                             </td>
                         </table>
 
@@ -63,7 +63,7 @@
     </table>
     <div class="row">
         <div class="col-sm-12">
-            {{ $docentes->links() }}
+            {{ $estudiantes->links() }}
         </div>
     </div>
 @endsection

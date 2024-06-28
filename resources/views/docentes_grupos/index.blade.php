@@ -26,7 +26,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary">Buscar</button>
-                <a href="{{ route('docentes_grupos.create') }}" class="btn btn-secondary">Ir a crear</a>
+                <a href="{{ route('docentes_grupos.create') }}" class="btn btn-success">Crear</a>
             </div>
 
         </div>
