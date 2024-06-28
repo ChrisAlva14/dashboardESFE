@@ -63,7 +63,7 @@
                                 </div>
                                 Grupos
                             </a>
-                            <a class="nav-link" href="#!">
+                            <a class="nav-link" href="{{ route('docentes_grupos.index') }}">
                                 <div class="sb-nav-link-icon">
                                     <i class="fa-solid fa-people-group"></i>
                                 </div>

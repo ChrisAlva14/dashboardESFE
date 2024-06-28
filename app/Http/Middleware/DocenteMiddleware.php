@@ -18,6 +18,6 @@ class DocenteMiddleware
         if (! auth()->check()) {
             return redirect()->route('docentes.showLoginForm');
         }
-        return $next($request);
+        return $next($request); 
     }
 }
