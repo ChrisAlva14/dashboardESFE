@@ -4,7 +4,6 @@
     <h1>Eliminar Asistencia</h1>
     <form action="{{ route('asistencias.destroy', $asistencia->id) }}" method="POST">
         @csrf
-        @method('DELETE')
         <div class="row">
             <div class="col-md-6">
                 <label for="estudiante_nombre" class="form-label">Estudiante</label>

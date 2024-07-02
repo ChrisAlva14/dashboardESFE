@@ -57,11 +57,7 @@
                     <td>
                         <a href="{{ route('asistencias.edit', $asistencia->id) }}" class="btn btn-warning">Editar</a>
                         <a href="{{ route('asistencias.show', $asistencia->id) }}" class="btn btn-info">Ver</a>
-                        <form action="{{ route('asistencias.destroy', $asistencia->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Eliminar</button>
-                        </form>
+                        <a href="{{ route('asistencias.delete', $asistencia->id) }}" class="btn btn-danger">Editar</a>
                     </td>
                 </tr>
             @endforeach

@@ -14,7 +14,5 @@ Route::group(['prefix' => 'asistencias', 'middleware' => 'auth_docentes'], funct
     Route::post('/edit/{id}', [AsistenciaController::class, 'update'])->name('asistencias.update');
     
     Route::get('/delete/{id}', [AsistenciaController::class, 'delete'])->name('asistencias.delete');
-    //Route::post('/delete/{id}', [AsistenciaController::class, 'destroy'])->name('asistencias.destroy');
-
-    Route::delete('/delete/{id}', [AsistenciaController::class, 'destroy'])->name('asistencias.destroy');
+    Route::post('/delete/{id}', [AsistenciaController::class, 'destroy'])->name('asistencias.destroy');
 });

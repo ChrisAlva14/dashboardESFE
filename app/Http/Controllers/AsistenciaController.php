@@ -93,7 +93,7 @@ class AsistenciaController extends Controller
             return abort(404);
         }
 
-        return view('asistencias.delete', compact('asistencia'));
+        return view('asistencia.delete', compact('asistencia'));
     }
 
     public function destroy($id)
