@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EstudianteController;
+use App\Models\Estudiante;
 
 Route::group(['prefix' => 'estudiantes', 'middleware' => 'auth_docentes'], function () {
     Route::get('/', [EstudianteController::class, 'Index'])->name('estudiantes.index');

@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <button type="submit" class="btn btn-primary">Buscar</button>
-                <a href="{{ route('asistencias.create') }}" class="btn btn-success">Crear</a>
+                <a href="{{ route('asistencias.marcar') }}" class="btn btn-success">Crear</a>
             </div>
         </div>
     </form>
@@ -57,7 +57,7 @@
                     <td>
                         <a href="{{ route('asistencias.edit', $asistencia->id) }}" class="btn btn-warning">Editar</a>
                         <a href="{{ route('asistencias.show', $asistencia->id) }}" class="btn btn-info">Ver</a>
-                        <a href="{{ route('asistencias.delete', $asistencia->id) }}" class="btn btn-danger">Editar</a>
+                        <a href="{{ route('asistencias.delete', $asistencia->id) }}" class="btn btn-danger">Eliminar</a>
                     </td>
                 </tr>
             @endforeach

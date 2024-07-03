@@ -16,6 +16,7 @@ class Asistencia extends Model
         'grupo_id',
         'fecha',
         'hora_entrada',
+        'ultima_asistencia'
     ];
 
     public function estudiante()

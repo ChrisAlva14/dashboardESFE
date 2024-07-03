@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
+
 
 class EstudianteController extends Controller
 {
@@ -34,7 +34,7 @@ class EstudianteController extends Controller
     {
         $estudiante = Estudiante::create($request->all());
 
-        return redirect()->route('estudiantes.index')->with('success','ESTUDIANTE CREADO CORRECTAMENTE'); 
+        return redirect()->route('estudiantes.index')->with('success', 'ESTUDIANTE CREADO CORRECTAMENTE');
     }
 
     public function show($id)
@@ -44,7 +44,7 @@ class EstudianteController extends Controller
         if (!$estudiante) {
             return abort(404);
         }
-        
+
         return view('estudiante.show', compact('estudiante'));
     }
 
@@ -55,7 +55,7 @@ class EstudianteController extends Controller
         if (!$estudiante) {
             return abort(404);
         }
-        
+
         return view('estudiante.edit', compact('estudiante'));
     }
 
@@ -70,19 +70,21 @@ class EstudianteController extends Controller
         $estudiante->nombre = $request->nombre;
         $estudiante->apellido = $request->apellido;
         $estudiante->email = $request->email;
+        $estudiante->ultima_asistencia = $request->ultima_asistencia;
 
         $estudiante->save();
-        
-        return redirect()->route('estudiantes.index')->with('success','ESTUDIANTE MODIFICADO CORRECTAMENTE'); 
+
+        return redirect()->route('estudiantes.index')->with('success', 'ESTUDIANTE MODIFICADO CORRECTAMENTE');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         $estudiante = Estudiante::find($id);
 
         if (!$estudiante) {
             return abort(404);
         }
-        
+
         return view('estudiante.delete', compact('estudiante'));
     }
 
@@ -95,7 +97,7 @@ class EstudianteController extends Controller
         }
 
         $estudiante->delete();
-        
-        return redirect()->route('estudiantes.index')->with('success','ESTUDIANTE ELIMINADO CORRECTAMENTE'); 
+
+        return redirect()->route('estudiantes.index')->with('success', 'ESTUDIANTE ELIMINADO CORRECTAMENTE');
     }
 }

@@ -23,9 +23,9 @@
         </div>
         <div style="margin-top: 10px" class="row">
             @error('InvalidCredentials')
-            <div class="alert alert-success fade show" id="success-message" data-bs-dismiss="alert" role="alert">
-                {{ $message }}
-            </div>
+                <div class="alert alert-success fade show" id="success-message" data-bs-dismiss="alert" role="alert">
+                    {{ $message }}
+                </div>
             @enderror
         </div>
     </form>

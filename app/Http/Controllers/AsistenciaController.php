@@ -6,6 +6,7 @@ use App\Models\Asistencia;
 use App\Models\Estudiante;
 use App\Models\Grupo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AsistenciaController extends Controller
 {
@@ -20,6 +21,7 @@ class AsistenciaController extends Controller
         if ($request->has('grupo_id')) {
             $query->where('grupo_id', 'like', '%' . $request->grupo_id . '%');
         }
+
 
         $asistencias = $query->orderBy('id', 'desc')->simplePaginate(10);
         $estudiantes = Estudiante::all();
@@ -109,5 +111,49 @@ class AsistenciaController extends Controller
         return redirect()
             ->route('asistencias.index')
             ->with('success', 'ASISTENCIA ELIMINADAD CORRECTAMENTE.');
+    }
+
+    public function showLoginForm()
+    {
+        return view('asistencia.marcar');
+    }
+
+    public function marcarAsistencia(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'pin' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()->first()], 400);
+        }
+
+        $pin = $request->input('pin');
+        $estudiante = Estudiante::where('pin', $pin)->first();
+
+        if (!$estudiante) {
+            return redirect()->back()->withErrors([
+                'InvalidCredentials' => 'LAS CREDENCIALES PROPORCIONADAS NO COINCIDEN CON NUESTROS REGISTROS.',
+            ]);
+        }
+
+        $grupo = Grupo::all()->first();
+        $grupoId = $grupo->id;
+
+        $asistencia = new Asistencia();
+
+        $asistencia->estudiante_id = $estudiante->id;
+        $asistencia->grupo_id = $grupo->id;
+
+        $asistencia->fecha = now()->format('Y-m-d');
+        $asistencia->hora_entrada = now()->format('h:i:s');
+        
+        $asistencia->ultima_asistencia = now();
+        
+        $asistencia->save();
+
+        return redirect()
+            ->route('asistencias.marcar')
+            ->with('success', 'ASISTENCIA GUARDADA CORRECTAMENTE.');
     }
 }

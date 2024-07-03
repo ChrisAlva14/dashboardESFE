@@ -41,6 +41,7 @@
                         <li><a class="dropdown-item" href="{{ route('docentes.logout') }}">Cerrar Sesión</a></li>
                     @else
                         <li><a class="dropdown-item" href="{{ route('docentes.login') }}">Iniciar Sesión</a></li>
+                        <li><a class="dropdown-item" href="{{ route('asistencias.marcar') }}">Marcar Asistencia</a></li>
                     @endif
                 </ul>
             </li>
@@ -89,10 +90,6 @@
                             </a>
                         @endif
                     </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Sesión Iniciada:</div>
-                    Administrador
                 </div>
             </nav>
         </div>
