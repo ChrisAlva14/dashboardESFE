@@ -70,7 +70,6 @@ class EstudianteController extends Controller
         $estudiante->nombre = $request->nombre;
         $estudiante->apellido = $request->apellido;
         $estudiante->email = $request->email;
-        $estudiante->ultima_asistencia = $request->ultima_asistencia;
 
         $estudiante->save();
 
